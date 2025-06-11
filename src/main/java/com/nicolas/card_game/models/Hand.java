@@ -41,8 +41,8 @@ public class Hand {
         return player;
     }
 
-    public void setPlayer(Player jogador) {
-        this.player = jogador;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public List<Card> getCards() {

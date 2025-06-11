@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.nicolas.card_game.models.Hand;
 
-public interface HandRepository extends JpaRepository<Long, Hand> {
+public interface HandRepository extends JpaRepository<Hand, Long> {
 
 }

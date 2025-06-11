@@ -16,7 +16,7 @@ public class Player {
     private String nickName;
     private boolean online;
 
-    @OneToOne(mappedBy = "jogador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Hand hand;
 
     public Player() {
