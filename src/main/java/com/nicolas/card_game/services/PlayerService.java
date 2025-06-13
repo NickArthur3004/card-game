@@ -11,4 +11,10 @@ public interface PlayerService {
     Player createPlayer(PlayerDTO dto);
 
     List<Player> findAllPlayers();
+
+    List<Player> createListPlayers(List<PlayerDTO> dto);
+
+    Player editPlayer(PlayerDTO dto);
+
+    void deletePlayer(Long id);
 }

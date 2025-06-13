@@ -15,6 +15,7 @@ public class Player {
     private Long id;
     private String nickName;
     private boolean online;
+    private boolean enable = true;
 
     @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Hand hand;
@@ -59,7 +60,13 @@ public class Player {
         this.hand = hand;
     }
 
-    
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
 
     
 }
