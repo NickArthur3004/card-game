@@ -2,8 +2,6 @@ package com.nicolas.card_game.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -102,7 +100,7 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     public void deletePlayer(Long id) {
-        Player p = repository.findById(id)
+        repository.findById(id)
                 .orElseThrow(() -> new PlayerNotFoundException("Player id not found!"));
         
         repository.deleteById(id);
@@ -114,13 +112,4 @@ public class PlayerServiceImpl implements PlayerService{
             throw new PlayerAlreadyExistException("This player " + nickName + " already exist! please try another NickName.");
         }
     }
-
-    public void playerIsEnable(boolean enable){
-        if(enable == true){
-
-        }
-    }
-
-    
-
 }
