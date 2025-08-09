@@ -1,11 +1,13 @@
 package com.nicolas.card_game.models;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Player {
@@ -17,8 +19,8 @@ public class Player {
     private boolean online;
     private boolean enable = true;
 
-    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Hand hand;
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Card> cards;
 
     public Player() {
     }
@@ -52,12 +54,12 @@ public class Player {
         this.online = online;
     }
 
-    public Hand getHand() {
-        return hand;
+    public List<Card> getCards() {
+        return cards;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
     }
 
     public boolean isEnable() {

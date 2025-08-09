@@ -1,6 +1,11 @@
 package com.nicolas.card_game.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -9,42 +14,51 @@ import jakarta.persistence.ManyToOne;
 public class Card {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String code;
-    private String image;
-    private String value;
     private String suit;
 
+    // Renomeado de 'value' para 'cardValue'
+    @Column(name = "card_value")
+    private String cardValue;
+
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "hand_id")
-    private Hand hand;
+    @JoinColumn(name = "player_id")
+    private Player player;
 
     public Card() {
     }
     
-    public Card(String code, String image, String value, String suit) {
+    public Card(String code, String cardValue, String suit) {
         this.code = code;
-        this.image = image;
-        this.value = value;
+        this.cardValue = cardValue;
         this.suit = suit;
     }
 
+    public Card(String code, String cardValue, String suit, Player player) {
+        this.code = code;
+        this.cardValue = cardValue;
+        this.suit = suit;
+        this.player = player;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
     public String getCode() {
         return code;
     }
     public void setCode(String code) {
         this.code = code;
-    }
-    public String getImage() {
-        return image;
-    }
-    public void setImage(String image) {
-        this.image = image;
-    }
-    public String getValue() {
-        return value;
-    }
-    public void setValue(String value) {
-        this.value = value;
     }
     public String getSuit() {
         return suit;
@@ -53,12 +67,20 @@ public class Card {
         this.suit = suit;
     }
 
-    public Hand getHand() {
-        return hand;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public String getCardValue() {
+        return cardValue;
+    }
+
+    public void setCardValue(String cardValue) {
+        this.cardValue = cardValue;
     }
     
 }

@@ -1,9 +1,11 @@
 package com.nicolas.card_game.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.nicolas.card_game.models.Card;
 
-public interface CardRepository extends JpaRepository<Card, String> {
+@Repository
+public interface CardRepository extends JpaRepository<Card, Long> {
 
 }

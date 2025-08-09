@@ -30,7 +30,7 @@ public class PlayerController {
     }
 
     @PostMapping(value = "/create")
-    public Player createPlayer(@RequestBody PlayerDTO dto){   
+    public Player createPlayer(@RequestBody PlayerDTO dto){
         return service.createPlayer(dto);
     }
 

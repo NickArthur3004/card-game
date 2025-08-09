@@ -10,9 +10,10 @@ import com.nicolas.card_game.models.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-
     boolean existsByNickNameAndEnableIsTrue(String nickName);
 
     List<Player> findAllByEnableIsTrue();
+
+    Player findByNickNameAndEnableIsTrue(String nickName);
 
 }
